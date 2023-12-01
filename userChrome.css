@@ -1,0 +1,40 @@
+/* hides the native tabs */
+#TabsToolbar {
+  display: none;
+}
+
+#back-button,
+#forward-button,
+#reader-mode-button {
+  display: none;
+}
+
+.titlebar-buttonbox-container {
+  display: none;
+}
+
+#nav-bar {
+  background-color: black !important;;
+}
+
+#urlbar-background {
+  background-color: black !important;
+}
+
+/* #urlbar #tracking-protection-icon-container,
+#urlbar #remote-control-box,
+#urlbar #identity-box,
+#urlbar #page-action-buttons{
+  display: none !important;
+}
+
+#urlbar:hover #tracking-protection-icon-container,
+#urlbar:hover #remote-control-box,
+#urlbar:hover #identity-box,
+#urlbar:hover #page-action-buttons {
+  display: flex !important;
+}
+
+* {
+  transition: .4s;
+} */
