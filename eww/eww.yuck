@@ -10,9 +10,6 @@
 (defpoll workspaces :interval "1s"
   "hyprctl workspaces -j | jq 'sort_by(.id)' | jq '.[] | select(.id > 0) | .id' | jq -s")
 
-(defpoll active-window :interval "200ms"
-  "hyprctl activewindow -j | jq '.title' -r")
-
 (defwindow bar
   :monitor 1
   :geometry (geometry :x "0%"
@@ -24,8 +21,7 @@
   :exclusive "true"
   (box :orientation "horizontal" :space-evenly true :width "500px"
     (box :orientation "horizontal" :halign "start" :space-evenly false
-      (workspaces)
-      (label :text active-window :class "widget"))
+      (workspaces))
     (box :orientation "horizontal" :halign "end" :space-evenly false
       (volume-scale)
       (monitor)
@@ -34,26 +30,30 @@
 (defwidget clock []
   (box :orientation "horizontal"
     :class "widget clock"
+    :space-evenly false
     (label :text {date + " "} :class "date")
-    (label :text time :class "highlight clock")))
+    (label :text {time + "   "} :class "highlight clock")
+    ; Display heart icon after time
+    (label :text " " :class "highlight")))
 
 (defwidget monitor []
   (box :orientation "horizontal"
     :class "widget monitor"
     :spacing 5
     :space-evenly false
-    (monitor-display :name "TEMP" :value "${EWW_TEMPS.AMDGPU_EDGE}°")
-    (monitor-display :name "CPU" :value "${round(EWW_CPU.avg, 0)}%")
-    (monitor-display :name "RAM" :value "${round(EWW_RAM.used_mem / EWW_RAM.total_mem * 100, 0)}%")
-    (monitor-display :name "BATT" :value "${EWW_BATTERY.BAT1.capacity}%" :hide {EWW_BATTERY.BAT1.capacity == 100})))
+    (monitor-display :icon "" :value "${EWW_TEMPS.AMDGPU_EDGE}°")
+    (monitor-display :icon "" :value "${round(EWW_CPU.avg, 0)}%")
+    (monitor-display :icon "󰭶" :value "${round(EWW_RAM.used_mem / EWW_RAM.total_mem * 100, 0)}%")
+    (monitor-display :icon "󰁹" :value "${EWW_BATTERY.BAT1.capacity}%" :hide {EWW_BATTERY.BAT1.capacity == 100})))
 
-(defwidget monitor-display [name value ?hide]
+(defwidget monitor-display [icon value ?hide]
   (box :orientation "horizontal" :space-evenly false :visible {!hide}
-   (label :text {name + " "})
+   (label :text {icon + " "} :class "icon")
    (label :text value :class "highlight")))
 
 (defwidget volume-scale []
   (box :orientation "horizontal" :space-evenly false :class "widget"
+    (label :text "󰋋 ")
     (scale :value volume :width 100)))
 
 (defwidget workspaces []
