@@ -1,0 +1,25 @@
+{
+  "height": 30,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "cpu", "memory", "temperature"],
+  "clock": {
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "<span color='#2D738F'>CPU</span> {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "<span color='#2D638F'>MEM</span> {}%"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format-critical": "<span color='#FF004D'>TEMP</span> {temperatureC}°",
+    "format": "<span color='#2D638F'>TEMP</span> {temperatureC}°"
+  },
+  "pulseaudio": {
+    "format": "<span color='#2D638F'>VOL</span> {volume}%"
+  }
+}
