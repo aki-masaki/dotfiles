@@ -1,28 +1,28 @@
 {
-  "height": 40,
+  "height": 30,
   "spacing": 4,
-  "margin-left": 5,
-  "margin-right": 5,
+  "margin-left": 20,
+  "margin-right": 20,
   "margin-top": 10,
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["sway/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["pulseaudio", "cpu", "memory", "temperature"],
   "clock": {
     "format-alt": "{:%Y-%m-%d}"
   },
   "cpu": {
-    "format": "<span color='#2E524D'></span> {usage}%",
+    "format": "p {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "<span color='#2E524D'></span> {}%"
+    "format": "m {}%"
   },
   "temperature": {
     "critical-threshold": 80,
-    "format-critical": "<span color='#2E524D'>TEMP</span> {temperatureC}°",
-    "format": "<span color='#2E524D'>󰏈</span> {temperatureC}°"
+    "format-critical": "TEMP {temperatureC}°",
+    "format": "t {temperatureC}°"
   },
   "pulseaudio": {
-    "format": "<span color='#2E524D'></span> {volume}%"
+    "format": "v {volume}%"
   }
 }

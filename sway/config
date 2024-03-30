@@ -13,6 +13,10 @@ set $menu tofi-drun | xargs swaymsg exec --
 gaps inner 10
 gaps outer 10
 
+client.focused #E93C35 #6C3A3755 #ffffff
+client.unfocused #222222 #22222255 #ffffff
+default_border pixel 3
+ 
 ### Output configuration
 #
 output * bg ~/wallpaper.png fill
