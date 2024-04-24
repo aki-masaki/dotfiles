@@ -10,16 +10,33 @@ set $right l
 set $term kitty
 set $menu tofi-drun | xargs swaymsg exec --
 
-gaps inner 10
-gaps outer 10
+gaps inner 5
+gaps outer 5
 
-client.focused #E93C35 #6C3A3755 #ffffff
-client.unfocused #222222 #22222255 #ffffff
+client.focused #d9d2d200 #00000066 #ffffff
+client.unfocused #22222200 #00000033 #ffffff
 default_border pixel 3
+
+for_window [title=".*"] opacity 0.75
+
+font pango:Raleway 11
+title_align center
+
+hide_edge_borders both
+
+workspace_layout tabbed
+
+exec waybar
  
 ### Output configuration
 #
 output * bg ~/wallpaper.png fill
+
+output HDMI-A-2 pos 0 0
+output eDP-1 pos 1920 0
+
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable 
 
 ### Idle configuration
 exec swayidle -w \
@@ -28,6 +45,14 @@ exec swayidle -w \
           before-sleep 'swaylock -f -c 000000'
 
 ### Key bindings
+#
+# Monitors
+#
+    bindsym $mod+Control+1 output HDMI-A-2 disable
+    bindsym $mod+Control+Shift+1 output HDMI-A-2 enable
+
+    bindsym $mod+Control+2 output eDP-1 disable
+    bindsym $mod+Control+Shift+2 output eDP-1 enable
 #
 # Basics:
 #

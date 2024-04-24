@@ -1,12 +1,21 @@
 {
-  "height": 30,
+  "height": 35,
   "spacing": 4,
-  "margin-left": 20,
-  "margin-right": 20,
+  "margin-left": 10,
+  "margin-right": 10,
   "margin-top": 10,
-  "modules-left": ["sway/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "cpu", "memory", "temperature"],
+  "modules-left": [
+    "sway/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "temperature"
+  ],
   "clock": {
     "format-alt": "{:%Y-%m-%d}"
   },
