@@ -11,7 +11,7 @@
     "clock"
   ],
   "modules-right": [
-    "pulseaudio",
+    "wireplumber",
     "cpu",
     "memory",
     "temperature"
@@ -31,7 +31,7 @@
     "format-critical": "TEMP {temperatureC}°",
     "format": "t {temperatureC}°"
   },
-  "pulseaudio": {
+  "wireplumber": {
     "format": "v {volume}%"
   }
 }
