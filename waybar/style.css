@@ -1,7 +1,7 @@
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0);
   color: #ffffff;
-  /* border: 1px solid #d9d2d2; */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0px;
 }
 
@@ -44,11 +44,11 @@ button:hover {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }

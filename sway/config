@@ -13,11 +13,12 @@ set $menu tofi-drun | xargs swaymsg exec --
 gaps inner 5
 gaps outer 5
 
-client.focused #d9d2d200 #00000066 #ffffff
-client.unfocused #22222200 #00000033 #ffffff
-default_border pixel 3
+client.focused #aaaaaa33 #00000033 #ffffff
+client.unfocused #00000000 #00000033 #555555
+default_border pixel 5
 
-for_window [title=".*"] opacity 0.75
+for_window [title=".*"] opacity 0.9
+for_window [title="niki"] always_below enable
 
 font pango:Raleway 11
 title_align center
@@ -30,7 +31,7 @@ exec waybar
  
 ### Output configuration
 #
-output * bg ~/wallpaper.png fill
+output * bg ~/wallpaper fill
 
 output HDMI-A-2 pos 0 0
 output eDP-1 pos 1920 0
@@ -188,9 +189,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bindsym XF86AudioMute exec pulsemixer --toggle-mute
-bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
-bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
