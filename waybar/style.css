@@ -1,10 +1,8 @@
 window#waybar {
-  background-color: rgba(46, 45, 0, .2);
+  background-color: rgba(0, 0, 0, 0);
   color: #ffffff;
-  border: 1px solid #8eff00;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0px;
-  font-size: 16px;
-  border-radius: 5px;
 }
 
 button {

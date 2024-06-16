@@ -10,19 +10,20 @@ set $right l
 set $term kitty
 set $menu tofi-drun | xargs swaymsg exec --
 
-gaps inner 10
-gaps outer 10
+gaps inner 5
+gaps outer 5
 
-client.focused #8eff00ff #2e2d00ff #8eff00ff
-client.unfocused #2e2d00ff #00000033 #ffffff
+client.focused #aaaaaa33 #00000033 #ffffff
+client.unfocused #00000000 #00000033 #555555
 default_border pixel 5
 
-for_window [title=".*"] opacity 0.75
+for_window [title=".*"] opacity 0.9
+for_window [title="niki"] always_below enable
 
-font pango:Raleway 12
+font pango:Raleway 11
 title_align center
 
-# hide_edge_borders both
+hide_edge_borders both
 
 workspace_layout tabbed
 
