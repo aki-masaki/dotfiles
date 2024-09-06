@@ -77,7 +77,8 @@ require('filetype').setup({
   overrides = {
      extensions = {
       c = 'c',
-      h = 'c'
+      h = 'c',
+      sh = 'bash'
      },
      complex = {
        ["hyprland.conf"] = 'hyprlang'
