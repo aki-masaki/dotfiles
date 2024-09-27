@@ -1,4 +1,4 @@
-vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.syntax = 'on'
 
@@ -32,10 +32,13 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'BurntSushi/ripgrep'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mrcjkb/rustaceanvim'
+Plug ('catppuccin/nvim', {as = 'catppuccin' })
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 vim.call('plug#end')
 
-vim.cmd.colorscheme('aura-dark')
+vim.cmd.colorscheme('catppuccin')
 
 vim.g.did_load_filetypes = 1
 vim.g.loaded_netrw = 1
@@ -67,18 +70,45 @@ keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
 keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 
+keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+keyset("i", "<C-f>",
+       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+keyset("i", "<C-b>",
+       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
+keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+
+vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+
+vim.api.nvim_create_augroup("CocGroup", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+    group = "CocGroup",
+    command = "silent call CocActionAsync('highlight')",
+    desc = "Highlight symbol under cursor on CursorHold"
+})
+
+-- GoTo code navigation
+keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
+keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+
 -- End code snippet
 
 keyset("n", "<leader>do", "<Plug>(coc-codeaction)")
 
 keyset("n", "<leader>e", ":NvimTreeToggle")
+keyset("n", "<leader>tf", ":NvimTreeFocus")
 
 require('filetype').setup({
   overrides = {
      extensions = {
       c = 'c',
       h = 'c',
-      sh = 'bash'
+      sh = 'bash',
+      html = 'html'
      },
      complex = {
        ["hyprland.conf"] = 'hyprlang'

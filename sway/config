@@ -7,7 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term kitty tmux
 set $menu tofi-drun | xargs swaymsg exec --
 
 gaps inner 5
@@ -31,7 +31,7 @@ exec waybar
  
 ### Output configuration
 #
-output * bg ~/wallpaper fill
+# output * bg ~/wallpaper fill
 
 output HDMI-A-2 pos 0 0
 output eDP-1 pos 1920 0
@@ -199,5 +199,33 @@ bindsym XF86AudioNext exec playerctl next
 
 # Capture the active screen
 bindsym $mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+
+mode Mouse {
+    bindsym a mode default, exec 'wl-kbptr-sway-active-win; swaymsg mode Mouse'
+    bindsym Shift+a mode default, exec 'wl-kbptr; swaymsg mode Mouse'
+
+    # Mouse move
+    bindsym h seat seat0 cursor move -15 0
+    bindsym j seat seat0 cursor move 0 15
+    bindsym k seat seat0 cursor move 0 -15
+    bindsym l seat seat0 cursor move 15 0
+
+    # Left button
+    bindsym s seat seat0 cursor press button1
+    bindsym --release s seat seat0 cursor release button1
+
+    # Middle button
+    bindsym d seat seat0 cursor press button2
+    bindsym --release d seat seat0 cursor release button2
+
+    # Right button
+    bindsym f seat seat0 cursor press button3
+    bindsym --release f seat seat0 cursor release button3
+
+    bindsym Escape mode default
+}
+
+bindsym $mod+g mode Mouse
+
 
 include /etc/sway/config.d/*
