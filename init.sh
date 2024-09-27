@@ -28,7 +28,7 @@ cp ./browser/userChrome.css $home/.mozilla/firefox/*.default-release/chrome/user
 
 step "Change kitty theme."
 
-kitten themes Atelier Cave Dark
+kitten themes Catpuccin-Mocha
 
 step "Installing Oh My Zsh."
 
