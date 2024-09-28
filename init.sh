@@ -1,6 +1,6 @@
 #! /bin/bash
 
-all_steps=16
+all_steps=19
 curr_step=1
 
 home=$HOME
@@ -23,12 +23,12 @@ cp ./kitty/kitty.conf $home/.config/kitty/kitty.conf
 
 step "Copy browser config."
 
-mkdir -p $home/.mozilla/firefox/*.default-release/chrome
-cp ./browser/userChrome.css $home/.mozilla/firefox/*.default-release/chrome/userChrome.css
+mkdir -p $home/.mozilla/firefox/$(*.default-release)/chrome
+cp ./browser/userChrome.css $home/.mozilla/firefox/$(*.default-release)/chrome/userChrome.css
 
 step "Change kitty theme."
 
-kitten themes Catpuccin-Mocha
+kitten themes Catppuccin-Mocha
 
 step "Installing Oh My Zsh."
 
@@ -47,6 +47,22 @@ fi
 step "Copy zsh config."
 
 cp ./zsh/.zshrc $home/.zshrc
+
+step "Installing tmux plugin manager."
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+step "Copy tmux config."
+
+if ! pacman -Qs "tmux" > /dev/null ; then
+  sudo pacman -S --noconfirm tmux > /dev/null
+fi
+
+cp ./tmux/.tmux.conf $home/.tmux.conf
+
+step "Installing tmux plugins."
+
+$home/.tmux/plugins/tmp/bin/install_plugins
 
 step "Copy neovim config."
 
@@ -80,10 +96,10 @@ sudo keyd reload
 sudo systemctl enable keyd
 sudo systemctl start keyd
 
-step "Copy niri config."
+step "Copy sway config."
 
-mkdir -p $home/.config/niri
-cp ./niri/config.kdl $home/.config/niri/config.kdl
+mkdir -p $home/.config/sway
+cp ./sway/config $home/.config/sway/config
 
 step "Copy pacman config."
 
