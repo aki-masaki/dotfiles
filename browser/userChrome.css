@@ -1,40 +1,105 @@
-/* hides the native tabs */
-#TabsToolbar {
-  display: none;
+#TabsToolbar .titlebar-spacer,
+#TabsToolbar #firefox-view-button,
+#TabsToolbar #alltabs-button,
+#TabsToolbar #tabbrowser-arrowscrollbox-periphery,
+#TabsToolbar tab.tabbrowser-tab image.tab-close-button close-icon,
+#TabsToolbar arrowscrollbox#tabbrowser-arrowscrollbox #scrollbutton-up,
+#TabsToolbar arrowscrollbox#tabbrowser-arrowscrollbox spacer,
+#TabsToolbar arrowscrollbox#tabbrowser-arrowscrollbox #scrollbutton-down,
+#TabsToolbar #new-tab-button {
+  display: none !important;
+}
+
+#TabsToolbar tab.tabbrowser-tab {
+  padding: 0 !important;
+  min-width: 300px !important;
+  max-width: 500px !important;
+}
+
+
+#TabsToolbar tab.tabbrowser-tab hbox.tab-content {
+  height: 30px !important;
+}
+
+#urlbar-background, #searchbar {
+  border: 0 !important;
+}
+
+#TabsToolbar tab.tabbrowser-tab vbox.tab-background {
+  box-shadow: none !important;
+  outline-color: transparent !important;
+  border-radius: 0 !important;
+  margin-block: 0 !important;
+  min-height: 0 !important;
+  outline: 0 !important;
+  outline-offset: 0 !important;
+}
+
+#TabsToolbar arrowscrollbox#tabbrowser-arrowscrollbox,
+#TabsToolbar hbox.toolbar-items,
+#TabsToolbar hbox.toolbar-items #TabsToolbar-customization-target {
+  height: 30px !important;
+}
+
+#TabsToolbar #tabbrowser-tabs {
+  border-inline: 0 !important;
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
 }
 
 #back-button,
 #forward-button,
 #reader-mode-button {
-  display: none;
+  display: none !important;
 }
 
 .titlebar-buttonbox-container {
-  display: none;
+  display: none !important;
 }
 
 #nav-bar {
-  background-color: black !important;;
+  background-color: #101017 !important;
+  border: 0 !important;
 }
 
 #urlbar-background {
-  background-color: black !important;
+  background-color: #101017 !important;
 }
 
-/* #urlbar #tracking-protection-icon-container,
+.urlbar-input-container #identity-box.extensionPage {
+  display: none;
+}
+
+toolbox#navigator-toolbox {
+  border: 0 !important;
+}
+
+#urlbar #tracking-protection-icon-container,
 #urlbar #remote-control-box,
 #urlbar #identity-box,
-#urlbar #page-action-buttons{
-  display: none !important;
+#urlbar #page-action-buttons {
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 #urlbar:hover #tracking-protection-icon-container,
 #urlbar:hover #remote-control-box,
 #urlbar:hover #identity-box,
 #urlbar:hover #page-action-buttons {
-  display: flex !important;
+  width: unset !important;
+  padding: unset !important;
+  margin: unset !important;
+}
+
+#urlbar #identity-box.verifiedDomain #identity-icon {
+  display: none;
+}
+
+#urlbar:hover #identity-box.verifiedDomain #identity-icon {
+  display: block;
 }
 
 * {
-  transition: .4s;
-} */
+  transition: .2s;
+} 
