@@ -1,3 +1,5 @@
+spawn-at-startup "swaybg" "-i" "~/wallpaper";
+
 input {
     warp-mouse-to-focus
 }
@@ -6,8 +8,12 @@ output "eDP-1" {
     position x=1920 y=0
 }
 
-output "HDMI-A-2" {
+output "DP-1" {
   position x=0 y=0
+}
+
+animations {
+  off
 }
 
 layout {
@@ -22,12 +28,19 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        width 4
+        width 3
 
         active-color "#96c8fa"
 
         inactive-color "#505050"
     }
+
+    tab-indicator {
+      active-color "red"
+      inactive-color "gray"
+    }
+
+    gaps 3
 }
 
 prefer-no-csd
@@ -44,7 +57,10 @@ binds {
     Mod+Q { spawn "kitty" "tmux"; }
     Mod+F { spawn "firefox"; }
     Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Super+Shift+L { spawn "swaylock" "-i" "~/wallpaper"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "amixer" "sset" "Master" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "amixer" "sset" "Master" "5%-"; }
