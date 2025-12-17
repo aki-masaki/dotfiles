@@ -1,24 +1,12 @@
-spawn-at-startup "swaybg" "-i" "~/wallpaper";
-
 input {
     warp-mouse-to-focus
-}
-
-output "eDP-1" {
-    position x=1920 y=0
 }
 
 output "DP-1" {
   position x=0 y=0
 }
 
-animations {
-  off
-}
-
 layout {
-    center-focused-column "on-overflow"
-
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
@@ -28,19 +16,17 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        width 3
-
-        active-color "#96c8fa"
-
-        inactive-color "#505050"
+      off
     }
 
-    tab-indicator {
-      active-color "red"
-      inactive-color "gray"
+    border {
+        width 2
+        active-color "#8C3C8C"
+        inactive-color "#0F050F"
+        urgent-color "#9b0000"
     }
 
-    gaps 3
+    gaps 0
 }
 
 prefer-no-csd
@@ -54,13 +40,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Q { spawn "kitty" "tmux"; }
+    Mod+Q { spawn "kitty"; }
     Mod+F { spawn "firefox"; }
     Mod+D { spawn "fuzzel"; }
 
     Mod+W { toggle-column-tabbed-display; }
 
-    Super+Shift+L { spawn "swaylock" "-i" "~/wallpaper"; }
+    Mod+Space { toggle-window-floating; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "amixer" "sset" "Master" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "amixer" "sset" "Master" "5%-"; }
